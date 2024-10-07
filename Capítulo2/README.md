@@ -140,6 +140,3 @@ curso=> commit prepared 'transaccion_orden_pago';
 COMMIT PREPARED
 ```
 
-
-En esta sección se debe mostrar el resultado esperado de nuestro laboratorio
-![imagen resultado](../images/img3.png)

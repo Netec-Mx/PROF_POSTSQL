@@ -1,4 +1,4 @@
-# Nombre del laboratorio 
+# Creación, uso y búsquedas de campos tipo arreglo, json y full-text search
 
 ## Objetivo de la práctica:
 Al finalizar la práctica, serás capaz de:
