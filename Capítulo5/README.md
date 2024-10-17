@@ -1,4 +1,4 @@
-# Afinación de consultas y funciones.
+# Afinación de Consultas y Funciones
 
 ## Objetivo de la práctica:
 Al finalizar la práctica, serás capaz de:
@@ -6,8 +6,8 @@ Al finalizar la práctica, serás capaz de:
 - Desarrollar habilidades en el uso de herramientas de análisis de consultas como EXPLAIN y ANALYZE.
 - Crear y optimizar funciones en PostgreSQL, incluyendo funciones escalares y de conjunto de filas.
 - Practicar la escritura de funciones PL/pgSQL para lógica de negocio compleja.
-## Objetivo Visual 
-Crear un diagrama o imagen que resuma las actividades a realizar, un ejemplo es la siguiente imagen. 
+## Objetivo Visual: 
+Crear un diagrama o imagen que resuma las actividades a realizar, se muestra un ejemplo en la siguiente imagen: 
 
 ![diagrama1](../images/cap5/img1.png)
 
@@ -16,10 +16,10 @@ Crear un diagrama o imagen que resuma las actividades a realizar, un ejemplo es 
 
 ## Tabla de ayuda:
 
-## Instrucciones 
+## Instrucciones: 
 <!-- Proporciona pasos detallados sobre cómo configurar y administrar sistemas, implementar soluciones de software, realizar pruebas de seguridad, o cualquier otro escenario práctico relevante para el campo de la tecnología de la información -->
-### Tarea 1. Crear una consulta, analizar su rendimiento y realizar la optimización.
-1. Crear tablas de ejemplo con datos de prueba:
+### Tarea 1. Crear una consulta, analizar su rendimiento y realizar la optimización
+Paso 1. Crear tablas de ejemplo con datos de prueba:
 ```shell
 CREATE TABLE clientes (
     id_cliente SERIAL PRIMARY KEY,
@@ -49,7 +49,7 @@ SELECT
 FROM generate_series(1, 1000000) i;
 ```
 
-2. Ejecutar una consulta inicial y analizar su rendimiento:
+Paso 2. Ejecutar una consulta inicial y analizar su rendimiento:
 ```shell
 
 EXPLAIN ANALYZE
@@ -62,15 +62,15 @@ ORDER BY total_ventas DESC
 LIMIT 10;
 ```
 
-3. Crear índices para mejorar el rendimiento:
+Paso 3. Crear índices para mejorar el rendimiento:
 ```shell
 CREATE INDEX idx_pedidos_fecha ON pedidos(fecha_pedido);
 CREATE INDEX idx_pedidos_cliente ON pedidos(id_cliente);
 ```
 
-4. Volver a ejecutar la consulta y comparar el rendimiento.
+Paso 4. Volver a ejecutar la consulta y comparar el rendimiento:
 
-5. Utilizar una subconsulta para optimizar aún más:
+Paso 5. Utilizar una subconsulta para optimizar aún más:
 ```shell
 EXPLAIN ANALYZE
 SELECT c.nombre, c.ciudad, p.num_pedidos, p.total_ventas
@@ -85,20 +85,20 @@ ORDER BY p.total_ventas DESC
 LIMIT 10;
 ```
 
-6. Actualizar las estadísticas de la base de datos:
+Paso 6. Actualizar las estadísticas de la base de datos:
 ```shell
 ANALYZE clientes;
 ANALYZE pedidos;
 ```
 
-7. Experimentar con diferentes estructuras de consulta y comparar los planes de ejecución.
+Paso 7. Experimentar con diferentes estructuras de consulta y comparar los planes de ejecución:
 
-### Resultado esperado
+### Resultado esperado:
 El rendimiento de la consulta debió mejorar.
 
-### Tarea 2. Crear funciones en postgresql.
+### Tarea 2. Crear funciones en postgresql
 
-1. Crear una función escalar simple:
+Paso 1. Crear una función escalar simple:
 ```shell
 CREATE OR REPLACE FUNCTION calcular_descuento(precio NUMERIC, porcentaje NUMERIC)
 RETURNS NUMERIC AS $$
@@ -112,7 +112,7 @@ $$ LANGUAGE plpgsql;
 SELECT calcular_descuento(100, 10);
 ```
 
-2. Crear una función de conjunto de filas.
+Paso 2. Crear una función de conjunto de filas:
 ```shell
 CREATE OR REPLACE FUNCTION obtener_top_clientes(fecha_inicio DATE, num_clientes INTEGER)
 RETURNS TABLE (
@@ -137,7 +137,7 @@ $$ LANGUAGE plpgsql;
 -- Probar la función
 SELECT * FROM obtener_top_clientes('2023-01-01', 5);
 ```
-3. Crear una función con lógica condicional:
+Paso 3. Crear una función con lógica condicional:
 ```shell
 CREATE OR REPLACE FUNCTION categorizar_cliente(total_ventas NUMERIC)
 RETURNS VARCHAR AS $$
@@ -162,7 +162,7 @@ GROUP BY c.id_cliente, c.nombre
 ORDER BY total_ventas DESC
 LIMIT 10;
 ```
-4. Crear una función que utilice un cursor:
+Paso 4. Crear una función que utilice un cursor:
 ```shell
 CREATE OR REPLACE FUNCTION procesar_pedidos_grandes()
 RETURNS void AS $$
@@ -187,7 +187,7 @@ $$ LANGUAGE plpgsql;
 SELECT procesar_pedidos_grandes();
 ```
 
-5. Optimizar una función con RETURN QUERY:
+Paso 5. Optimizar una función con RETURN QUERY:
 ```shell
 CREATE OR REPLACE FUNCTION clientes_sin_pedidos()
 RETURNS TABLE (id_cliente INT, nombre VARCHAR) AS $$
@@ -203,5 +203,5 @@ $$ LANGUAGE plpgsql;
 -- Usar la función
 SELECT * FROM clientes_sin_pedidos();
 ```
-### Resultado esperado
+### Resultado esperado:
 Las funciones se ejecutan sin errores.
