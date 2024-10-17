@@ -7,7 +7,7 @@ Al finalizar la práctica, serás capaz de:
 - Entender el commit de dos fases (Two-Phase Commit) para coordinar transacciones distribuidas y garantizar la integridad en operaciones complejas.
 - Practicar cómo preparar (PREPARE TRANSACTION), confirmar (COMMIT PREPARED), y revertir (ROLLBACK PREPARED) transacciones para el manejo de datos distribuidos.
 ## Objetivo Visual 
-Crear un diagrama o imagen que resuma las actividades a realizar, un ejemplo es la siguiente imagen. 
+Crear un diagrama o imagen que resuma las actividades a realizar, se muestra un ejemplo en la siguiente imagen: 
 
 ![diagrama1](../images/cap2/img1.png)
 
